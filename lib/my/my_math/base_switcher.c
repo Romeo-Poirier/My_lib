@@ -5,10 +5,12 @@
 ** .
 */
 
+#include <unistd.h>
+
 static int my_putchar(char c)
 {
     write(1, &c, 1);
-    return1;
+    return 1;
 }
 
 int base_switcher(int nb, int base)

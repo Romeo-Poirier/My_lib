@@ -5,8 +5,7 @@
 ** reverses the elements of the list
 */
 
-#include <stddef.h>
-#include "my.h"
+#include "../headers/my_linked_list.h"
 
 void my_rev_linked_list(linked_list_t **begin)
 {

@@ -43,6 +43,6 @@ int my_fnbr(int width, int nb)
     int len = 0;
 
     len += padding(my_count_int(nb), width);
-    len += my_put_int(nb);
+    len += my_putint(nb);
     return len;
 }

@@ -5,22 +5,23 @@
 ** puts something in a linked list
 */
 
-#include <stddef.h>
-#include "my.h"
-#include <stdlib.h>
+#include "../headers/my_linked_list.h"
+#include "../headers/my_str.h"
 
-int my_put_in_linked_list(struct linked_list **list, char *av)
+int my_put_in_linked_list(linked_list_t **list, char *av)
 {
     struct linked_list *element;
 
     element = malloc(sizeof(*element));
+    if (element == NULL)
+        return -1;
     element->data = av;
     element->next = *list;
     *list = element;
     return 0;
 }
 
-void my_show_linked_list(struct linked_list *list)
+void my_show_linked_list(linked_list_t *list)
 {
     struct linked_list *cell;
 
@@ -31,7 +32,7 @@ void my_show_linked_list(struct linked_list *list)
     }
 }
 
-struct linked_list *my_params_to_linked_list(int ac, char *const *av)
+linked_list_t *my_params_to_linked_list(int ac, char *const *av)
 {
     struct linked_list *list_head;
 
