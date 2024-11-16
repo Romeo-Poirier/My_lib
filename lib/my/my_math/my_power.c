@@ -5,7 +5,7 @@
 ** recursive tunc, returns nb^p
 */
 
-int my_compute_power_rec(int nb, int p)
+int my_power(int nb, int p)
 {
     int res;
 

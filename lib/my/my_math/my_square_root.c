@@ -5,7 +5,7 @@
 ** if root of nb is whole, returns it, otherwise return 0
 */
 
-int my_compute_square_root(int nb)
+int my_square_root(int nb)
 {
     int i = 0;
 
