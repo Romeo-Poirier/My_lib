@@ -5,7 +5,11 @@
 ** .
 */
 
-#include "my.h"
+static int my_putchar(char c)
+{
+    write(1, &c, 1);
+    return1;
+}
 
 int base_switcher(int nb, int base)
 {

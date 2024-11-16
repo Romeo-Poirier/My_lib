@@ -14,7 +14,7 @@ int my_str_isnum(char const *str)
     return 1;
 }
 
-int my_char_isnum(char c)
+int my_char_isnumer(char const c)
 {
     if (c < 48 || c > 57)
         return 0;

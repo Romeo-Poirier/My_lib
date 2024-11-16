@@ -11,17 +11,15 @@ static int my_is_prime(int nb)
 
     x = 2;
     while (x < 2147483647) {
-        if ((nb % x == 0 && x != nb) || (nb % x == 0 && x == nb)) {
+        if ((nb % x == 0 && x != nb) || (nb % x == 0 && x == nb))
             break;
-        } else {
+        else
             x++;
-        }
     }
-    if (x == nb) {
-        return (1);
-    } else {
-        return (0);
-    }
+    if (x == nb)
+        return 1;
+    else
+        return 0;
 }
 
 int my_find_prime_sup(int nb)

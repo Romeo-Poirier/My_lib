@@ -2,12 +2,13 @@
 ** EPITECH PROJECT, 2024
 ** task 05 - my_strstr
 ** File description:
-** searches for a sub-str inside str
+** return the index where to_find was found,
+** -1 if not found
 */
 
-#include "../my.h"
+#include "../headers/my_str.h"
 
-char *my_strstr(char *str, char const *to_find)
+int my_strstr(char *str, char const *to_find)
 {
     int verified_letters = 0;
     int i_find = 0;
@@ -20,8 +21,8 @@ char *my_strstr(char *str, char const *to_find)
             i_find = 0;
         }
         if (verified_letters == my_strlen(to_find))
-            return &str[i - verified_letters];
+            return i - verified_letters;
         i_find++;
     }
-    return 0;
+    return -1;
 }

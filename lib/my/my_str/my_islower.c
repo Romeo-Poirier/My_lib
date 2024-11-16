@@ -13,3 +13,10 @@ int my_str_islower(char const *str)
     }
     return 1;
 }
+
+int my_char_islower(char const c)
+{
+    if (c < 97 || c > 122)
+        return 0;
+    return 1;
+}

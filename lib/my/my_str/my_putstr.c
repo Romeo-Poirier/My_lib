@@ -5,20 +5,15 @@
 ** displays one-by-one the chars of a str and returns the len
 */
 
-#include "../my.h"
+#include "../headers/my_str.h"
 
-int my_putstr(char *str)
+int my_putstr(char const *str)
 {
-    int i;
-
-    i = 0;
-    while (str[i] != '\0') {
+    for (int i = 0; str[i] != '\0'; i++)
         my_putchar(str[i]);
-        i++;
-    }
     return i;
 }
-
+//move to my_printf/
 int my_fstr(int width, char *str)
 {
     int len = 0;
@@ -28,7 +23,7 @@ int my_fstr(int width, char *str)
     return len;
 }
 
-int my_putstr_i_end(const char *str, int i, int end)
+int my_putstr_i_end(char const *str, int i, int end)
 {
     int start = i;
 

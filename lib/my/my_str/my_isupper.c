@@ -13,3 +13,10 @@ int my_str_isupper(char const *str)
     }
     return 1;
 }
+
+int my_char_isupper(char const c)
+{
+    if (c < 65 || c > 90)
+        return 0;
+    return 1;
+}
