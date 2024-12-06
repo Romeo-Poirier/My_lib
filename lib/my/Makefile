@@ -5,9 +5,9 @@
 ## better builder
 ##
 
-SRC = my_linked_list/my_linked_list_size.c \
-    my_linked_list/my_params_to_linked_list.c \
-    my_linked_list/my_rev_linked_list.c \
+SRC = my_linked_list/add_to_linked_list.c \
+    my_linked_list/free_linked_list.c \
+    my_linked_list/show_linked_list.c \
     my_math/base_switcher.c \
     my_math/my_find_prime_sup.c \
     my_math/my_getnbr.c \

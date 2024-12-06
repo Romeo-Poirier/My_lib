@@ -9,12 +9,21 @@
     #define MY_LINKED_LIST_H
     #include <stddef.h>
     #include <stdlib.h>
-typedef struct linked_list {
+typedef struct cell_s {
+    struct cell_s *prev;
     void *data;
-    struct linked_list *next;
+    struct cell_s *next;
+} cell_t;
+
+typedef struct linked_list_s {
+    cell_t *head;
+    cell_t *tail;
 } linked_list_t;
-int my_link_list_size(linked_list_t const *begin);
-int my_put_in_linked_list(linked_list_t **list, char *av);
-void my_show_linked_list(linked_list_t *list);
-linked_list_t *my_params_to_linked_list(int ac, char *const *av);
+
+linked_list_t *init_linked_list(void);
+linked_list_t *add_as_head(linked_list_t *list, void *data);
+linked_list_t *add_as_tail(linked_list_t *list, void *data);
+void free_cell(linked_list_t *list, cell_t *cell);
+void free_linked_list(linked_list_t *list);
+int show_str_list(linked_list_t *head);
 #endif /* MY_LINKED_LIST_H */

@@ -5,6 +5,8 @@
 ** 3 funcs to copy src into dest
 */
 
+#include <stddef.h>
+
 char *my_strcpy(char *dest, char const *src)
 {
     int i = 0;
@@ -32,11 +34,11 @@ char *mstrn_to_mcpy(char *dest, char const *src, int n, int m)
     int dest_i = 0;
 
     if (n < 0)
-        return 0;
-    for (int i = n; i < m; i++) {
+        return NULL;
+    for (int i = n; i <= m; i++) {
         dest[dest_i] = src[i];
         dest_i++;
     }
-    dest[m - n] = '\0';
+    dest[m - n + 1] = '\0';
     return dest;
 }

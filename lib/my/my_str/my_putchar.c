@@ -14,7 +14,7 @@ int my_putchar(char const c)
 }
 
 //should move my_fchar to my_printf/
-int my_fchar(int width, int int_arg)
+/*int my_fchar(int width, int int_arg)
 {
     int len = 0;
     char to_print = (char) int_arg;
@@ -23,3 +23,4 @@ int my_fchar(int width, int int_arg)
     len += my_putchar(to_print);
     return len;
 }
+*/

@@ -11,7 +11,7 @@ int my_count_int(int nb)
 
     if (nb < 0) {
         dig++;
-	nb *= -1;
+    nb *= -1;
     }
     while (nb > 0) {
         dig++;
