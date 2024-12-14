@@ -13,8 +13,12 @@ void free_cell(linked_list_t *list, cell_t *cell)
         return;
     if (cell->prev != NULL)
         cell->prev->next = cell->next;
+    else
+        list->head = cell->next;
     if (cell->next != NULL)
         cell->next->prev = cell->prev;
+    else
+        list->tail = cell->prev;
     free(cell);
 }
 
