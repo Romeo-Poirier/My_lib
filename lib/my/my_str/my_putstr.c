@@ -19,7 +19,6 @@ int my_putstr(char const *str)
 int my_putstr_i_end(char const *str, int i, int end)
 {
     char tmp[end - i + 1];
-    int start = i;
 
     mstrn_to_mcpy(tmp, str, i, end);
     return my_putstr(tmp);

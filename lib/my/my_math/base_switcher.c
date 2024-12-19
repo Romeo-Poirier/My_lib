@@ -51,7 +51,6 @@ int base_switcher_maj(int nb, int base)
 
 int base_switcher_size(int nb, int base)
 {
-    char *hexa = "0123456789abcdef";
     int quotient = nb / base;
     int len = 0;
 
