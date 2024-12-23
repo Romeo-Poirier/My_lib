@@ -9,11 +9,10 @@ Every functions in this project has been tested but most likely still has bug as
 
 # How to modify this project for your own uses
 
-clone and rename this repo to your own
-add all your .c files to a directory
-put this directory in lib/my/ and add a header for your functions in lib/my/headers
-and finally add this line at the top of the Makefile in lib/my/ :
-    SRC += $(wildcard my_dir/*.c)
+1. clone and rename this repo to your own
+2. add all your .c files to a directory
+3. put this directory in lib/my/ and add a header file for your functions in lib/my/headers
+4. and finally add this line at the top of the Makefile in lib/my/ : ```SRC += $(wildcard my_dir/*.c)```
 
 for an exemple of how to compile with this library, take a look a the Makefile at the root.
 
