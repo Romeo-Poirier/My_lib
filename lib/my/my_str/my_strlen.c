@@ -14,3 +14,15 @@ int my_strlen(char const *str)
     }
     return i;
 }
+
+int mstrn_to_clen(char const *str, int n, char c)
+{
+    int i = 0;
+
+    if (n < 0 || n > my_strlen(str))
+        return -1;
+    while (str[n + i] != '\0' && str[n + i] != '\0') {
+        i++;
+    }
+    return i;
+}

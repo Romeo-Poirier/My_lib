@@ -20,3 +20,10 @@ int my_char_isprint(char const c)
         return 0;
     return 1;
 }
+
+int my_char_isfence(char const c)
+{
+    if (c == ' ' || c == '\n' || c == '_' || c == '\0')
+        return 1;
+    return 0;
+}

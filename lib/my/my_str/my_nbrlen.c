@@ -5,7 +5,7 @@
 ** 3 funcs to count the digits of numbers
 */
 
-int my_count_int(int nb)
+int my_intlen(int nb)
 {
     int dig = 0;
 
@@ -20,7 +20,7 @@ int my_count_int(int nb)
     return dig;
 }
 
-int my_count_lli(long long int nb)
+int my_llilen(long long int nb)
 {
     int dig = 0;
 

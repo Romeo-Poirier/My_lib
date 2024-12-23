@@ -42,3 +42,20 @@ char *mstrn_to_mcpy(char *dest, char const *src, int n, int m)
     dest[m - n + 1] = '\0';
     return dest;
 }
+
+char *mstrn_to_ccpy(char *dest, char const *src, int n, char c)
+{
+    int dest_i = 0;
+    int i = n;
+
+    if (n < 0 || n > my_strlen(src))
+        return NULL;
+    for (; src[i] != '\0'; i++) {
+        if (src[i] == c)
+            break;
+        dest[dest_i] = src[i];
+        dest_i++;
+    }
+    dest[i - n + 1] = '\0';
+    return dest;
+}

@@ -19,7 +19,7 @@ int my_putlli(long long int nb)
         my_putlli(nb / 10);
         my_putlli(nb % 10);
     }
-    return my_count_lli(nb);
+    return my_llilen(nb);
 }
 
 int my_putint(int nb)
@@ -34,7 +34,7 @@ int my_putint(int nb)
         my_putint(nb / 10);
         my_putint(nb % 10);
     }
-    return my_count_int(nb);
+    return my_intlen(nb);
 }
 
 //should move my_fnber to my_printf/
