@@ -10,7 +10,7 @@
 
 //my_*len.c
 int my_strlen(char const *str);
-int mstrn_to_clen(char const *str, int n, char c);
+int mstrn_to_clen(char const *str, int n, char *c);
 int my_intlen(int nb);
 int my_llilen(long long int nb);
 

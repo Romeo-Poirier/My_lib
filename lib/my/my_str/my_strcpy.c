@@ -5,6 +5,7 @@
 ** 3 funcs to copy src into dest
 */
 
+#include "../headers/my_str.h"
 #include <stddef.h>
 
 char *my_strcpy(char *dest, char const *src)
