@@ -5,21 +5,27 @@
 ** testing the library
 */
 
-#include "include/my_linked_list.h"
+#include "include/my_mem.h"
+#include <stdio.h>
+
+int *testing_stuff(void) {
+    int *list = my_calloc(6, sizeof(char));
+
+    if (list == NULL)
+        return NULL;
+    for (int i = 0; i < 6 - 1; i++)
+        list[i] = i;
+    return list; 
+}
+
 
 int main(void)
 {
-    linked_list_t *list = init_linked_list();
-    char *str = "bruh\n";
-    char *s1 = "Hello ";
-    char *s2 = "World";
-    char *s3 = "!";
+    int *list = testing_stuff();
 
-    add_as_head(list, s1);
-    add_as_tail(list, s2);
-    add_as_head(list, s3);
-    add_as_tail(list, str);
-    show_str_list(list);
-    free_linked_list(list);
+    if (list == NULL)
+        return 84;
+    for (int i = 0; i < 6; i++)
+        printf("%d\n", list[i]);
     return 0;
 }

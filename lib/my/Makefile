@@ -7,6 +7,7 @@
 
 SRC := $(wildcard my_linked_list/*.c)
 SRC += $(wildcard my_math/*.c)
+SRC += $(wildcard my_mem/*.c)
 SRC += $(wildcard my_str/*.c)
 
 OBJ = $(SRC:.c=.o)
