@@ -14,8 +14,12 @@ Every functions in this project has been tested but most likely still has bug as
 3. put this directory in lib/my/ and add a header file for your functions in lib/my/headers
 4. and finally add this line at the top of the Makefile in lib/my/ : ```SRC += $(wildcard my_dir/*.c)```
 
-for an exemple of how to compile with this library, take a look a the Makefile at the root.
+For an exemple of how to compile with this library, take a look a the Makefile at the root.
 
 # Known Issues (work in progress)
 
-the my_printf directory isn't used as it might not work, working on a my_printfv2
+None for now
+
+# Important Note
+
+The function ```my_calloc(int nmemb, int bytes)``` is used extensively throughout this library and it is therefore recommended to always keep the directory and header file know as "my_mem" and "my_mem.h" whenever using this library. Otherwise you should replace all my_calloc by a simple calloc and add the corresponding include.
