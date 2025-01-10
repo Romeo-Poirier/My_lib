@@ -4,18 +4,19 @@
 ** File description:
 ** .
 */
-#include "my.h"
+
+#include "../headers/my.h"
 
 int mod_g(int width, double nb, int precision)
 {
     long long int nbr = (long long int)nb;
     int len = 0;
-    int dig = my_count_digit(nbr);
+    int dig = my_llilen(nbr);
 
     if (dig <= precision) {
         if (dig == precision) {
-            len += padding(my_count_digit(nbr), width);
-            len += my_put_nb(nbr);
+            len += padding(my_llilen(nbr), width);
+            len += my_putlli(nbr);
         } else
             len += mod_f_g(nb, precision - dig, width);
     } else

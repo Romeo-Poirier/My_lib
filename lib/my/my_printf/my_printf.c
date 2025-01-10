@@ -7,8 +7,7 @@
 
 #include <stdarg.h>
 #include <stddef.h>
-#include "my_printf.h"
-#include "my.h"
+#include "../headers/my.h"
 
 static const sflag_t flag_tab[8] =
 {

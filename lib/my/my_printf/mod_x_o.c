@@ -5,7 +5,7 @@
 ** .
 */
 
-#include "my.h"
+#include "../headers/my.h"
 
 int mod_x(int width, int nb)
 {
