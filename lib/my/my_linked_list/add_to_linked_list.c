@@ -18,7 +18,6 @@ linked_list_t *init_linked_list(void)
     }
     list->head = NULL;
     list->tail = NULL;
-    list->max_id = -1;
     return list;
 }
 
