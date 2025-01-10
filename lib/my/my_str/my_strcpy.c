@@ -34,7 +34,7 @@ char *mstrn_to_mcpy(char *dest, char const *src, int n, int m)
 {
     int dest_i = 0;
 
-    if (n < 0)
+    if (n < 0 || n >= my_strlen(src))
         return NULL;
     for (int i = n; i <= m; i++) {
         dest[dest_i] = src[i];

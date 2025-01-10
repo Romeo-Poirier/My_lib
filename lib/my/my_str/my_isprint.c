@@ -5,6 +5,8 @@
 ** returns 1 if is printable, 0 otherwise
 */
 
+#include "../headers/my_str.h"
+
 int my_str_isprint(char const *str)
 {
     for (int i = 0; str[i] != '\0'; i++) {
@@ -23,7 +25,7 @@ int my_char_isprint(char const c)
 
 int my_char_isfence(char const c)
 {
-    if (c == ' ' || c == '\n' || c == '_' || c == '\0')
-        return 1;
-    return 0;
+    if (my_char_isalpha(c) || my_char_isnumer(c))
+        return 0;
+    return 1;
 }

@@ -36,13 +36,3 @@ int my_putint(int nb)
     }
     return my_intlen(nb);
 }
-
-//should move my_fnber to my_printf/
-/*int my_fnbr(int width, int nb)
-{
-    int len = 0;
-
-    len += padding(my_count_int(nb), width);
-    len += my_putint(nb);
-    return len;
-    }*/

@@ -9,9 +9,9 @@ int my_intlen(int nb)
 {
     int dig = 0;
 
-    if (nb < 0) {
+    if (nb <= 0) {
         dig++;
-    nb *= -1;
+        nb *= -1;
     }
     while (nb > 0) {
         dig++;
@@ -24,7 +24,7 @@ int my_llilen(long long int nb)
 {
     int dig = 0;
 
-    if (nb < 0) {
+    if (nb <= 0) {
         dig++;
         nb *= -1;
     }
