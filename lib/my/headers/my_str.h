@@ -28,31 +28,33 @@ int my_strstr(char *str, char const *to_find);
 
 //my_is*.c
 
-//return 1 if char is a letter or a number
+//return 1 if c is found inside str, else return 0
+int my_char_is_in(char c, char *str);
+//return 1 if c is a letter or a number, else return 0
 int my_char_isalnum(char const c);
-//return 1 if char is a letter
+//return 1 if c is a letter, else return 0
 int my_char_isalpha(char const c);
-//return 1 if char isn't a letter nor a number
+//return 1 if c isn't a letter nor a number, else return 0
 int my_char_isfence(char const c);
-//return 1 if char is lowercase letter
+//return 1 if c is lowercase letter, else return 0
 int my_char_islower(char const c);
-//return 1 if char is a number
+//return 1 if c is a number, else return 0
 int my_char_isnumer(char const c);
-//return 1 if char is printable
+//return 1 if c is printable, else return 0
 int my_char_isprint(char const c);
-//return 1 if char is uppercase letter
+//return 1 if c is uppercase letter, else return 0
 int my_char_isupper(char const c);
-//return 1 if str only consists of letters and numbers
+//return 1 if str only consists of letters and numbers, else return 0
 int my_str_isalnum(char const *str);
-//return 1 if str only consists of letters
+//return 1 if str only consists of letters, else return 0
 int my_str_isalpha(char const *str);
-//return 1 if str only consists of lowercase letters
+//return 1 if str only consists of lowercase letters, else return 0
 int my_str_islower(char const *str);
-//return 1 if str only consists of numbers
+//return 1 if str only consists of numbers, else return 0
 int my_str_isnumer(char const *str);
-//return 1 if str only consists of printable characters
+//return 1 if str only consists of printable characters, else return 0
 int my_str_isprint(char const *str);
-//return 1 if str only consists of uppercase letters
+//return 1 if str only consists of uppercase letters, else return 0
 int my_str_isupper(char const *str);
 
 //my_put*.c
