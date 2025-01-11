@@ -5,27 +5,29 @@
 ** testing the library
 */
 
-#include "include/my_mem.h"
+#include "include/my.h"
+#include <stdlib.h>
 #include <stdio.h>
 
-int *testing_stuff(void) {
-    int *list = my_calloc(6, sizeof(char));
+int *test_calloc(void) {
+    int *list = my_calloc(6, sizeof(int));
 
     if (list == NULL)
         return NULL;
-    for (int i = 0; i < 6 - 1; i++)
-        list[i] = i;
+    for (int i = 1; i < 6; i++)
+        list[i - 1] = i;
     return list; 
 }
 
 
 int main(void)
 {
-    int *list = testing_stuff();
+    int *list = test_calloc();
 
     if (list == NULL)
         return 84;
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; list[i] != 0; i++)
         printf("%d\n", list[i]);
+    free(list);
     return 0;
 }
