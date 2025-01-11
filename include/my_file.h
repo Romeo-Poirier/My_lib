@@ -10,17 +10,20 @@
     #include <unistd.h>
 
 
-//open and close
+//file_open_close.c
+
 //return file descriptor
 int open_file(char const *filepath);
 //close file descriptor
 int close_file(int fd);
 
-    //read_file.c
+//read_file.c
+
 //read the file at path and return malloc'd buffer with the file written in it
 char *read_file(char *path);
 
-    //getters
+//getters
+
 //return the size of the file at path in bytes
 int get_file_size(char *path);
 
