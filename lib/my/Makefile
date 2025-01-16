@@ -10,6 +10,7 @@ SRC += $(wildcard my_linked_list/*.c)
 SRC += $(wildcard my_math/*.c)
 SRC += $(wildcard my_mem/*.c)
 SRC += $(wildcard my_printf/*.c)
+SRC += $(wildcard my_printfv2.0/*.c)
 SRC += $(wildcard my_str/*.c)
 
 OBJ = $(SRC:.c=.o)

@@ -5,13 +5,14 @@
 ** version 2.0 of my_printf
 */
 
+#include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include "../headers/my_printfv2_0.h"
 #include "../headers/my_str.h"
 #include "../headers/my_mem.h"
 
-static const specifier_t specifiers_tab[8] =
+static const specifier_t specifiers_tab[20] =
 {
     {'d', NULL},
     {'i', NULL},
@@ -32,7 +33,7 @@ static const specifier_t specifiers_tab[8] =
     {'p', NULL},
     {'n', NULL},
     {'%', NULL},
-    NULL
+    {'\0', NULL}
 };
 
 static char my_char_ispecifier(char c)
@@ -48,6 +49,7 @@ static char my_char_ispecifier(char c)
 
 static int find_specifier(const char *format, int i)
 {
+    i++;
     for (; format[i] != '\0'; i++) {
         if (my_char_ispecifier(format[i]) != '\0')
             break;
@@ -79,37 +81,62 @@ static int display_specifier(va_list list, int i, format_t *format)
     return len;
 }
 
+static int flag_manager_init_error(format_t *arg_format, int i_end, int i)
+{
+    if (arg_format == NULL || i_end < i) {
+        if (arg_format != NULL)
+            free_arg_format(arg_format);
+        if (i_end < i)
+            write(STDERR_FILENO, 
+            "my_printf: unkown or missing specifier\n", 39);
+        return 1;
+    }
+    return 0;
+}
+
 int flag_manager(const char *format, int i, va_list list, int len)
 {
     int i_end = find_specifier(format, i);
-    format_t *arg_format = {NULL, 0, 0, NULL, len};
+    format_t *arg_format = init_format_t(len);
+    char *mod_format = NULL;
     int old_len = len;
 
+    if (flag_manager_init_error(arg_format, i_end, i))
+        return -1;
+    mod_format = my_calloc(i_end - i, sizeof(char));
+    if (mod_format == NULL)
+        return -1;
+    mstrn_to_mcpy(mod_format, format, i++, i_end);
+    mod_parsing(mod_format, arg_format, list);
     for (int j = 0; specifiers_tab[j].letter != '\0'; j++)
         if (specifiers_tab[j].letter == format[i_end])
             len += display_specifier(list, j, arg_format);
     if (old_len == len)
         len += my_putstr_i_end(format, i, i_end);
+    free_arg_format(arg_format);
     return len;
 }
 
-int my_printf(const char *format, ...)
+int my_printfv2(const char *format, ...)
 {
-    va_list list = NULL;
+    va_list list;
     int start = 0;
     int len = 0;
 
     if (format == NULL)
-        return 84;
+        return -1;
     va_start(list, format);
     for (int i = 0; format[i] != '\0'; i++) {
         if (format[i] == '%') {
             len += display_format(format, start, i - 1);
-            len = flag_manager(format, ++i, list, len);
+            len = flag_manager(format, i, list, len);
             i = find_specifier(format, i);
             start = i + 1;
         }
+        if (len == -1)
+            return -1;
     }
+    len += display_format(format, start, my_strlen(format));
     va_end(list);
     return len;
 }
