@@ -1,5 +1,5 @@
 /*
-** Personnal Project, 2025
+** EPITECH PROJECT, 2025
 ** My_lib
 ** File description:
 ** version 2.0 of my_printf
@@ -81,13 +81,13 @@ static int display_specifier(va_list list, int i, format_t *format)
     return len;
 }
 
-static int flag_manager_init_error(format_t *arg_format, int i_end, int i)
+int flag_manager_init_error(format_t *arg_format, int i_end, int i)
 {
     if (arg_format == NULL || i_end < i) {
         if (arg_format != NULL)
             free_arg_format(arg_format);
         if (i_end < i)
-            write(STDERR_FILENO, 
+            write(STDERR_FILENO,
             "my_printf: unkown or missing specifier\n", 39);
         return 1;
     }

@@ -11,6 +11,7 @@
 #include "../headers/my_mem.h"
 #include <stdlib.h>
 
+
 void free_arg_format(format_t *arg_format)
 {
     if (arg_format == NULL)
@@ -21,7 +22,6 @@ void free_arg_format(format_t *arg_format)
         free(arg_format->len_mod);
     free(arg_format);
 }
-
 
 format_t *init_format_t(int len)
 {
@@ -54,7 +54,8 @@ static void get_wp(char const *mft, format_t *arg_format, va_list list, int i)
             i++;
     }
     if (mft[i] == '.') {
-        arg_format->precision = my_getnbr_from(mft, ++i);
+        i++;
+        arg_format->precision = my_getnbr_from(mft, i);
         while (my_char_isnumer(mft[i]))
             i++;
     }
