@@ -12,7 +12,8 @@
 #include "../headers/my_str.h"
 #include "../headers/my_mem.h"
 
-static const specifier_t specifiers_tab[20] =
+static
+const specifier_t specifiers_tab[20] =
 {
     {'d', NULL},
     {'i', NULL},
@@ -36,7 +37,8 @@ static const specifier_t specifiers_tab[20] =
     {'\0', NULL}
 };
 
-static char my_char_ispecifier(char c)
+static
+char my_char_ispecifier(char c)
 {
     char *specifier_list = "disfFpucxXaAeE%ogGn";
 
@@ -47,7 +49,8 @@ static char my_char_ispecifier(char c)
     return '\0';
 }
 
-static int find_specifier(const char *format, int i)
+static
+int find_specifier(const char *format, int i)
 {
     i++;
     for (; format[i] != '\0' && format[i] != ' '; i++) {
@@ -59,14 +62,16 @@ static int find_specifier(const char *format, int i)
     return i;
 }
 
-static int display_format(const char *format, int start, int end)
+static
+int display_format(const char *format, int start, int end)
 {
     if (start == end)
         return 0;
     return my_putstr_i_end(format, start, end);
 }
 
-static int display_specifier(va_list list, int i, format_t *format)
+static
+int display_specifier(va_list list, int i, format_t *format)
 {
     int len = 0;
     char *str = NULL;
