@@ -16,29 +16,29 @@ static const specifier_t specifiers_tab[20] =
 {
     {'d', NULL},
     {'i', NULL},
-    {'o', NULL},
-    {'u', NULL},
-    {'x', NULL},
-    {'X', NULL},
-    {'e', NULL},
-    {'E', NULL},
+    {'s', NULL},
     {'f', NULL},
     {'F', NULL},
-    {'g', NULL},
-    {'G', NULL},
+    {'p', NULL},
+    {'u', NULL},
+    {'c', NULL},
+    {'x', NULL},
+    {'X', NULL},
     {'a', NULL},
     {'A', NULL},
-    {'c', NULL},
-    {'s', NULL},
-    {'p', NULL},
-    {'n', NULL},
+    {'e', NULL},
+    {'E', NULL},
     {'%', NULL},
+    {'o', NULL},
+    {'g', NULL},
+    {'G', NULL},
+    {'n', NULL},
     {'\0', NULL}
 };
 
 static char my_char_ispecifier(char c)
 {
-    char *specifier_list = "diouxXeEfFgGaAcCspn%";
+    char *specifier_list = "disfFpucxXaAeE%ogGn";
 
     for (int i = 0; specifier_list[i] != '\0'; i++) {
         if (c == specifier_list[i])
@@ -50,11 +50,11 @@ static char my_char_ispecifier(char c)
 static int find_specifier(const char *format, int i)
 {
     i++;
-    for (; format[i] != '\0'; i++) {
+    for (; format[i] != '\0' && format[i] != ' '; i++) {
         if (my_char_ispecifier(format[i]) != '\0')
             break;
     }
-    if (format[i] == '\0')
+    if (format[i] == '\0' || format[i] == ' ')
         return -1;
     return i;
 }

@@ -56,8 +56,8 @@ specifiers:
     ~X   write unsigned int in base 16 (HEXADECIMAL)~
     ~e   write rounded double in style [-]d.ddde±dd (scientific)~
     ~E   write rounded double in style [-]d.dddE±dd (scientific)~
-    ~f   write rounded double in style [-]d.ddd~
-    ~F   write rounded double in style [-]d.ddd~
+    ~f   write rounded double in style [-]ddd.ddd~
+    ~F   write rounded double in style [-]ddd.ddd~
     ~g   write in f or e style depending on result and precision~
     ~G   write in F or E style depending on result and precision~
     ~a   write double in style [-]0xh.hhhhp±d (hexadecimal)~
