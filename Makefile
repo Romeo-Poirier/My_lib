@@ -7,21 +7,25 @@
 
 SRC = main.c
 
+OBJ = $(SRC:.c=.o)
+
 NAME = main
 
-FLAGS = -L lib/ -lmy -Wall -Wextra
+LDFLAGS = -L lib/ -lmy
+
+CFLAGS = -Wall -Wextra
 
 all:    mylib $(NAME)
 
 mylib:
 	make -C lib/my all
 
-$(NAME):
-	gcc -o $(NAME) $(SRC) $(FLAGS) -g3
+$(NAME): $(OBJ)
+	gcc -o $(NAME) $(OBJ) $(LDFLAGS) $(CFLAGS)
 
 clean:
 	make -C lib/my fclean
-
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f libmy.a
