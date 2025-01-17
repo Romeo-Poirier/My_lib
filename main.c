@@ -11,6 +11,6 @@
 
 int main(void)
 {
-    my_printfv2("hello %#022.56l                  c      \n");
+    my_printfv2("hello %#0.4llc                  c      \n");
     return 0;
 }

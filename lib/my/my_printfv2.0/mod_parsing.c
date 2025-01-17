@@ -46,33 +46,43 @@ format_t *init_format_t(int len)
 }
 
 //get_ width and precision
-static void get_wp(char const *mft, format_t *arg_format, va_list list, int i)
+static 
+int get_wp(char const *mft, format_t *arg_format, va_list list, int i)
 {
     if (my_char_isnumer(mft[i])) {
         arg_format->width = my_getnbr_from(mft, i);
         while (my_char_isnumer(mft[i]))
             i++;
     }
-    if (mft[i] == '.') {
-        i++;
-        arg_format->precision = my_getnbr_from(mft, i);
+    else {
+        if (mft[i] == '*')
+            arg_format->width = va_arg(list, int);
+    }
+    i++;
+    if (mft[i - 1] == '.') {
+        if (mft[i] == '*')
+            arg_format->width = va_arg(list, int);
+        else
+            arg_format->precision = my_getnbr_from(mft, i);
         while (my_char_isnumer(mft[i]))
             i++;
     }
+    return i;
 }
 
 //mft should only be %[flags][width][.precision][length modifier]specifier
 format_t *mod_parsing(char const *mft, format_t *arg_format, va_list list)
 {
-    int i = 0;
+    int i = 1;
 
+    printf("mod parsing called with: %s\n", mft);
     for (; mft[i] != '\0'; i++) {
         if (my_char_is_in(mft[i], "#0- +"))
             arg_format->flags[my_strlen(arg_format->flags) % 5] = mft[i];
         else
             break;
     }
-    get_wp(mft, arg_format, list, i);
+    i = get_wp(mft, arg_format, list, i);
     for (; mft[i] != '\0'; i++) {
         if (my_char_is_in(mft[i], "hlL"))
             arg_format->len_mod[my_strlen(arg_format->len_mod) % 2] = mft[i];

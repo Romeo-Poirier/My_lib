@@ -5,7 +5,6 @@
 ** version 2.0 of my_printf
 */
 
-#include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include "../headers/my_printfv2_0.h"
@@ -113,6 +112,7 @@ int flag_manager(const char *format, int i, va_list list, int len)
         return -1;
     mstrn_to_mcpy(mod_format, format, i++, i_end);
     mod_parsing(mod_format, arg_format, list);
+    printf("mof_parsing: %s, %d, %d, %s\n", arg_format->flags, arg_format->width, arg_format->precision, arg_format->len_mod);
     for (int j = 0; specifiers_tab[j].letter != '\0'; j++)
         if (specifiers_tab[j].letter == format[i_end])
             len += display_specifier(list, j, arg_format);
