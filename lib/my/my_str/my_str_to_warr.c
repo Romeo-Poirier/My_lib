@@ -5,27 +5,35 @@
 ** my_str_to_word_array
 */
 
-#include "../headers/my_printf.h"
 #include "../headers/my_str.h"
 #include "../headers/my_mem.h"
 #include <stddef.h>
 #include <unistd.h>
 #include <stdlib.h>
 
-int my_nb_words(char *str)
+static int nb_words_basic_check(char *str)
 {
-    int words = 0;
-
     if (str == NULL)
         return 0;
     if (my_strlen(str) == 0)
         return 0;
-    for (int i = 0; str[i + 1] != '\0'; i++) {
-        if (i >= 1 && !my_char_isfence(str[i]) && my_char_isfence(str[i - 1]))
+    if (my_strlen(str) == 1)
+        return 1;
+    return -1;
+}
+
+int my_nb_words(char *str)
+{
+    int words = 0;
+    int i = 0;
+
+    if (nb_words_basic_check(str) != -1)
+        return nb_words_basic_check(str);
+    do {
+        i++;
+        if (!my_char_isprint(str[i]) && my_char_isprint(str[i - 1]))
             words++;
-        if (i == 0 && !my_char_isfence(str[i]) && my_char_isfence(str[i + 1]))
-            words++;
-    }
+    } while (str[i] != '\0');
     return words;
 }
 
@@ -49,7 +57,7 @@ static int add_word(char *word, char *str, int i, int Wlen)
 
 int on_word(int *Wlen, char *str, int i)
 {
-    if (my_char_isalnum(str[i])) {
+    if (my_char_isprint(str[i])) {
         *Wlen += 1;
         return 1;
     }
@@ -85,10 +93,8 @@ char **str_to_warr(char *str)
     char **warr = NULL;
     int error = 0;
 
-    if (str == NULL)
-        return NULL;
     nb_words = my_nb_words(str);
-    if (my_strlen(str) == 0 || nb_words == 0)
+    if (nb_words == 0)
         return NULL;
     warr = my_calloc(nb_words + 1, sizeof(char *));
     if (warr == NULL)
