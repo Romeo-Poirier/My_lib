@@ -12,8 +12,13 @@ char *strdupcat(char *s1, char *s2)
 {
     char *str = NULL;
 
-    if (s1 != NULL && s2 != NULL)
-        str = my_calloc(my_strlen(s1) + my_strlen(s2) + 1, sizeof(char));
+    if (!s1 && !s2)
+        return NULL;
+    if (s1 == NULL)
+        return my_strdup(s2);
+    if (s2 == NULL)
+        return my_strdup(s1);
+    str = my_calloc(my_strlen(s1) + my_strlen(s2) + 1, sizeof(char));
     if (str == NULL)
         return NULL;
     my_strcpy(str, s1);

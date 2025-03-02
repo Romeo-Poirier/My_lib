@@ -201,7 +201,9 @@ char *strdup_till(char *src, char c);
 //my_strdupcat.c
 
 //allocate memory to cpy s1 and s2 in a new str
-//both s1 and s2 need to be different than NULL
+//if s1 is NULL but not s2, is equivalent to my_strdup(s2)
+//if s2 is NULL but not s1, is equivalent to my_strdup(s1)
+//if both are NULL, return NULL
 //RETURN VALUE:
 //on success: pointer to malloc'd string
 //on error: NULL
