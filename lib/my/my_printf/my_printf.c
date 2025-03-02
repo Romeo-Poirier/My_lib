@@ -32,7 +32,7 @@ static int my_char_ispecifier(char c)
     return 0;
 }
 
-static int find_specifier(const char *format, int i)
+static int find_specifier(char *format, int i)
 {
     int j = i;
 
@@ -43,7 +43,7 @@ static int find_specifier(const char *format, int i)
     return j;
 }
 
-int spe_flag_manager(const char *format, int i, va_list list, int width)
+int spe_flag_manager(char *format, int i, va_list list, int width)
 {
     int len = 0;
     int i_end = find_specifier(format, i);
@@ -65,7 +65,7 @@ int spe_flag_manager(const char *format, int i, va_list list, int width)
     return len;
 }
 
-int flag_manager(const char *format, int i, va_list list, int len)
+int flag_manager(char *format, int i, va_list list, int len)
 {
     int i_end = find_specifier(format, i);
     int width = width_manager(format, i, list);
@@ -83,7 +83,7 @@ int flag_manager(const char *format, int i, va_list list, int len)
     return len;
 }
 
-int my_printf(const char *format, ...)
+int my_printf(char *format, ...)
 {
     va_list list;
     int count = 0;

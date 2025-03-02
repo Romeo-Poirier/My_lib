@@ -66,5 +66,5 @@ specifiers:
     n   the number of written characters so far is stored in the int *arg
     %   write a '%'. no argument needed.
 */
-int my_printf(const char *format, ...);
+int my_printf(char *format, ...);
 #endif /* MY_PRINTF */

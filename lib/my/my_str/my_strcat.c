@@ -7,7 +7,7 @@
 
 #include "../headers/my_str.h"
 
-char *my_strcat(char *dest, char const *src)
+char *my_strcat(char *dest, char *src)
 {
     int len_dest = my_strlen(dest);
 
@@ -17,7 +17,7 @@ char *my_strcat(char *dest, char const *src)
     return &dest[0];
 }
 
-char *my_strncat(char *dest, char const *src, int nb)
+char *my_strncat(char *dest, char *src, int nb)
 {
     int len_dest = my_strlen(dest);
 
@@ -27,7 +27,7 @@ char *my_strncat(char *dest, char const *src, int nb)
     return &dest[0];
 }
 
-char *mstrn_to_mcat(char *dest, char const *src, int n, int m)
+char *mstrn_to_mcat(char *dest, char *src, int n, int m)
 {
     int len_dest = my_strlen(dest);
 

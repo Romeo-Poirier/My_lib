@@ -5,27 +5,12 @@
 ** testing the library
 */
 
-#include "include/my_mem.h"
-#include <stdio.h>
-
-int *testing_stuff(void) {
-    int *list = my_calloc(6, sizeof(char));
-
-    if (list == NULL)
-        return NULL;
-    for (int i = 0; i < 6 - 1; i++)
-        list[i] = i;
-    return list; 
-}
+#include "my.h"
 
 
 int main(void)
 {
-    int *list = testing_stuff();
-
-    if (list == NULL)
-        return 84;
-    for (int i = 0; i < 6; i++)
-        printf("%d\n", list[i]);
+    my_printf("strlen of NULL: %d\nstrlen of empty string; %d\n",
+    my_strlen(NULL), my_strlen(""));
     return 0;
 }

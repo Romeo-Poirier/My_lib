@@ -14,7 +14,7 @@
 //return the length of str
 int my_strlen(char *str);
 //return the length from n to the first encountered character that is in c
-int mstrn_to_clen(char const *str, int n, char *c);
+int mstrn_to_clen(char *str, int n, char *c);
 //return the number of digits of an int
 int my_intlen(int nb);
 //return the number of digits of a long long int
@@ -36,7 +36,7 @@ int nullify_from_till(char *src, int n, char c, int backward);
 //my_findstr.c
 
 //return the first index where to_find was found in str or -1 if not found
-int my_strstr(char *str, char const *to_find);
+int my_strstr(char *str, char *to_find);
 
 
 //my_is*.c
@@ -93,9 +93,9 @@ int my_putint(int nb);
 //display a long long int in the standard output, return length of nb
 int my_putlli(long long int nb);
 //display str in the standard output, return length of str
-int my_putstr(char const *str);
+int my_putstr(char *str);
 //display str from i to end in the standard output, return end - i
-int my_putstr_i_end(char const *str, int i, int end);
+int my_putstr_i_end(char *str, int i, int end);
 
 //copy nb into a malloc'd string
 //RETURN VALUE:
@@ -150,13 +150,13 @@ int my_nb_words(char *str, char *separator);
 
 /*concatenates src at the end of dest.
 dest needs to be of correct size*/
-char *my_strcat(char *dest, char const *src);
+char *my_strcat(char *dest, char *src);
 /*concatenates src up to n at the end of dest.
 dest needs to be of correct size*/
-char *my_strncat(char *dest, char const *src, int n);
+char *my_strncat(char *dest, char *src, int n);
 /*concatenates src from n to m - 1 at the end of dest.
 dest needs to be of correct size*/
-char *mstrn_to_mcat(char *dest, char const *src, int n, int m);
+char *mstrn_to_mcat(char *dest, char *src, int n, int m);
 
 
 //my_strcmp.c
@@ -173,16 +173,16 @@ int my_strncmp(char const *s1, char const *s2, int n);
 
 /*copy src into dest.
 dest needs to be of correct size*/
-char *my_strcpy(char *dest, char const *src);
+char *my_strcpy(char *dest, char *src);
 /*copy src up to n into dest.
 dest needs to be of correct size*/
-char *my_strncpy(char *dest, char const *src, int n);
+char *my_strncpy(char *dest, char *src, int n);
 /*copy src from n to c (or the end of src if c isn't encountered) into dest.
 dest needs to be of correct size*/
-char *mstrn_to_ccpy(char *dest, char const *src, int n, char c);
+char *mstrn_to_ccpy(char *dest, char *src, int n, char c);
 /*copy src from n to m into dest.
 dest needs to be of correct size*/
-char *mstrn_to_mcpy(char *dest, char const *src, int n, int m);
+char *mstrn_to_mcpy(char *dest, char *src, int n, int m);
 //cpy src starting at n into dest
 //dest needs to be of correct size
 char *my_strcpy_from(char *dest, char *src, int n);
@@ -205,12 +205,12 @@ char *strdup_till(char *src, char c);
 //RETURN VALUE:
 //on success: pointer to malloc'd string
 //on error: NULL
-char *strdupcat(const char *s1, const char *s2);
+char *strdupcat(char *s1, char *s2);
 
 //allocate memory to copy s1, s2 and s3 in a new str
 //all arguments need to be different than NULL
 //RETURN VALUE:
 //on success: pointer to malloc'd string
 //on error: NULL
-char *strdup2cat(const char *s1, const char *s2, const char *s3);
+char *strdup2cat(char *s1, char *s2, char *s3);
 #endif /* MY_STR_H */

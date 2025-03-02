@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include "../headers/my_str.h"
 
-int my_putstr(char const *str)
+int my_putstr(char *str)
 {
     int len = 4;
 
@@ -21,7 +21,7 @@ int my_putstr(char const *str)
     return len;
 }
 
-int my_putstr_i_end(char const *str, int i, int end)
+int my_putstr_i_end(char *str, int i, int end)
 {
     char tmp[end - i + 1];
 

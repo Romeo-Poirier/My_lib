@@ -8,7 +8,7 @@
 #include "../headers/my_str.h"
 #include "../headers/my_mem.h"
 
-char *strdupcat(const char *s1, const char *s2)
+char *strdupcat(char *s1, char *s2)
 {
     char *str = NULL;
 
@@ -21,7 +21,7 @@ char *strdupcat(const char *s1, const char *s2)
     return str;
 }
 
-char *strdup2cat(const char *s1, const char *s2, const char *s3)
+char *strdup2cat(char *s1, char *s2, char *s3)
 {
     char *str = NULL;
 

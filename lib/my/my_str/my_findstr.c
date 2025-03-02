@@ -8,7 +8,7 @@
 
 #include "../headers/my_str.h"
 
-int my_strstr(char *str, char const *to_find)
+int my_strstr(char *str, char *to_find)
 {
     int verified_letters = 0;
     int i_find = 0;

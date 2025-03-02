@@ -8,7 +8,7 @@
 #include "../headers/my_str.h"
 #include <stddef.h>
 
-char *my_strcpy(char *dest, char const *src)
+char *my_strcpy(char *dest, char *src)
 {
     int i = 0;
 
@@ -20,7 +20,7 @@ char *my_strcpy(char *dest, char const *src)
     return dest;
 }
 
-char *my_strncpy(char *dest, char const *src, int n)
+char *my_strncpy(char *dest, char *src, int n)
 {
     if (n < 0)
         return 0;
@@ -30,7 +30,7 @@ char *my_strncpy(char *dest, char const *src, int n)
     return dest;
 }
 
-char *mstrn_to_mcpy(char *dest, char const *src, int n, int m)
+char *mstrn_to_mcpy(char *dest, char *src, int n, int m)
 {
     int dest_i = 0;
 
@@ -44,7 +44,7 @@ char *mstrn_to_mcpy(char *dest, char const *src, int n, int m)
     return dest;
 }
 
-char *mstrn_to_ccpy(char *dest, char const *src, int n, char c)
+char *mstrn_to_ccpy(char *dest, char *src, int n, char c)
 {
     int dest_i = 0;
     int i = n;

@@ -26,7 +26,7 @@ int my_strlen(char *str)
     return ptr - str;
 }
 
-int mstrn_to_clen(char const *str, int n, char *c)
+int mstrn_to_clen(char *str, int n, char *c)
 {
     int i = 0;
 
