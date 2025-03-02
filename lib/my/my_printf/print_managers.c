@@ -5,7 +5,7 @@
 ** funcs for managing displays and mods
 */
 
-#include "my.h"
+#include "../headers/my.h"
 #include <stdio.h>
 
 int padding(int arg_size, int width)

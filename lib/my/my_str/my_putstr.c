@@ -10,10 +10,15 @@
 
 int my_putstr(char const *str)
 {
-    int i = my_strlen(str);
+    int len = 4;
 
-    write(1, str, i);
-    return i;
+    if (str == NULL) {
+        write(STDOUT_FILENO, "(nil)", 5);
+    } else {
+        len = my_strlen(str);
+        write(STDOUT_FILENO, str, len);
+    }
+    return len;
 }
 
 int my_putstr_i_end(char const *str, int i, int end)
@@ -23,14 +28,3 @@ int my_putstr_i_end(char const *str, int i, int end)
     mstrn_to_mcpy(tmp, str, i, end);
     return my_putstr(tmp);
 }
-
-//move to my_printf/
-/*int my_fstr(int width, char *str)
-{
-    int len = 0;
-
-    len += padding(my_strlen(str), width);
-    len += my_putstr(str);
-    return len;
-    }
-*/

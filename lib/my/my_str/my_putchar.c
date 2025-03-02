@@ -9,18 +9,6 @@
 
 int my_putchar(char const c)
 {
-    write(1, &c, 1);
+    write(STDOUT_FILENO, &c, 1);
     return 1;
 }
-
-//should move my_fchar to my_printf/
-/*int my_fchar(int width, int int_arg)
-{
-    int len = 0;
-    char to_print = (char) int_arg;
-
-    len += padding(1, width);
-    len += my_putchar(to_print);
-    return len;
-}
-*/

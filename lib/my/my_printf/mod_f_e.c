@@ -4,7 +4,8 @@
 ** File description:
 ** .
 */
-#include "my.h"
+
+#include "../headers/my.h"
 
 int mod_f_maj_f(int width, double nb, int precision)
 {

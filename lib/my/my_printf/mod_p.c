@@ -6,7 +6,7 @@
 */
 
 #include <stdlib.h>
-#include "my.h"
+#include "../headers/my.h"
 
 static int base_switch(long long int nb, int base)
 {
@@ -28,7 +28,6 @@ static int base_switch(long long int nb, int base)
 
 int base_switch_size(long long int nb, int base)
 {
-    char *hexa = "0123456789abcdef";
     long long int quotient = nb / base;
     int len = 0;
 

@@ -6,7 +6,7 @@
 */
 
 #include <stdlib.h>
-#include "my.h"
+#include "../headers/my.h"
 #include <stdint.h>
 
 static double get_precision(double nb, int precision)
@@ -32,9 +32,9 @@ int mod_f(double nb, int precision)
 
     if (nbr_entier == 0)
             len++;
-    len += my_put_nb(nbr_entier);
+    len += my_putlli(nbr_entier);
     len += my_putchar('.');
-    len += my_put_nb(nbr_decimal);
+    len += my_putlli(nbr_decimal);
     if (nbr_decimal == 0) {
         for (int i = 0; i < precision - 1; i++)
             len += my_putchar('0');
@@ -51,9 +51,9 @@ int mod_f_size(double nb, int precision)
 
     if (nbr_entier == 0)
             len++;
-    len += my_count_digit(nbr_entier);
+    len += my_llilen(nbr_entier);
     len += 1;
-    len += my_count_digit(nbr_decimal);
+    len += my_llilen(nbr_decimal);
     if (nbr_decimal == 0) {
         for (int i = 0; i < precision - 1; i++)
             len += 1;

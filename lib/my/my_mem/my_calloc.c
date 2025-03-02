@@ -5,8 +5,7 @@
 ** my_calloc
 */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "../headers/my_mem.h"
 
 int calloc_in_error(int nmemb, int bytes)
 {
@@ -35,8 +34,7 @@ void *my_calloc(int nmemb, int bytes)
         write(STDERR_FILENO, "my_calloc: couldn't allocate memory\n", 36);
         return NULL;
     }
-    for (int i = 0; i < len; i++) {
+    for (int i = 0; i < len; i++)
         ((char *) array)[i] = 0;
-    }
     return array;
 }
