@@ -5,11 +5,14 @@
 ## general Makefile
 ##
 
-SRC = main.c
+SRC := main.c
+SRC += $(wildcard src/*.c)
 
 NAME = main
 
-FLAGS = -L lib/ -lmy -Wall -Wextra
+CFLAGS = -Wall -Wextra -iquote include
+
+LDFLAGS = -L lib/ -lmy
 
 all:    mylib $(NAME)
 
@@ -17,11 +20,10 @@ mylib:
 	make -C lib/my all
 
 $(NAME):
-	gcc -o $(NAME) $(SRC) $(FLAGS) -g3
+	gcc -o $(NAME) $(SRC) $(LDFLAGS) $(CFLAGS)
 
 clean:
 	make -C lib/my fclean
-
 
 fclean: clean
 	rm -f libmy.a
