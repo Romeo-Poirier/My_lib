@@ -18,16 +18,12 @@ static int c_is_in(char c, char *str)
     return 0;
 }
 
-int my_strlen(char const *str)
+int my_strlen(char *str)
 {
-    int i = 0;
+    char *ptr = str;
 
-    if (str == NULL)
-        return 0;
-    while (str[i] != '\0') {
-        i++;
-    }
-    return i;
+    for (; ptr && *ptr; ptr++) {}
+    return ptr - str;
 }
 
 int mstrn_to_clen(char const *str, int n, char *c)

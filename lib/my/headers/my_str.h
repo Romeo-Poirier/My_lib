@@ -12,7 +12,7 @@
 //my_*len.c
 
 //return the length of str
-int my_strlen(char const *str);
+int my_strlen(char *str);
 //return the length from n to the first encountered character that is in c
 int mstrn_to_clen(char const *str, int n, char *c);
 //return the number of digits of an int
