@@ -36,7 +36,7 @@ int nullify_from_till(char *src, int n, char c, int backward);
 //my_findstr.c
 
 //return the first index where to_find was found in str or -1 if not found
-int my_strstr(char *str, char *to_find);
+char *my_strstr(char *str, char *to_find);
 
 
 //my_is*.c
@@ -198,19 +198,26 @@ char *my_strdup_from(char *src, int n);
 //on success: pointer to a malloc'd string
 //on error: NULL
 char *strdup_till(char *src, char c);
+
 //my_strdupcat.c
 
 //allocate memory to cpy s1 and s2 in a new str
-//both s1 and s2 need to be different than NULL
+//if s1 is NULL but not s2, is equivalent to my_strdup(s2)
+//if s2 is NULL but not s1, is equivalent to my_strdup(s1)
+//if both are NULL, return NULL
 //RETURN VALUE:
 //on success: pointer to malloc'd string
 //on error: NULL
 char *strdupcat(char *s1, char *s2);
-
 //allocate memory to copy s1, s2 and s3 in a new str
 //all arguments need to be different than NULL
 //RETURN VALUE:
 //on success: pointer to malloc'd string
 //on error: NULL
 char *strdup2cat(char *s1, char *s2, char *s3);
+//allocate memory to copy s1 and cat s2 up to n in a new str
+//RETURN VALUE:
+//on success: pointer to malloc'd string
+//on failure: NULL
+char *strdupncat(char *s1, char *s2, int n);
 #endif /* MY_STR_H */

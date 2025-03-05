@@ -40,3 +40,11 @@ char *strdup2cat(char *s1, char *s2, char *s3)
     my_strcat(str, s3);
     return str;
 }
+
+char *strdupncat(char *s1, char *s2, int n)
+{
+    char tmp[my_strlen(s2)];
+
+    my_strncpy(tmp, s2, n);
+    return strdupcat(s1, tmp);
+}
