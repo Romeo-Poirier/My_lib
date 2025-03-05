@@ -8,6 +8,8 @@
 SRC := main.c
 SRC += $(wildcard src/*.c)
 
+OBJ = $(SRC:.o=.c)
+
 NAME = main
 
 CFLAGS = -Wall -Wextra -iquote include
@@ -20,7 +22,7 @@ mylib:
 	make -C lib/my all
 
 $(NAME):
-	gcc -o $(NAME) $(SRC) $(LDFLAGS) $(CFLAGS)
+	gcc -o $(NAME) $(OBJ) $(LDFLAGS) $(CFLAGS)
 
 clean:
 	make -C lib/my fclean
