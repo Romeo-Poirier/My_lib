@@ -22,7 +22,9 @@ int my_strlen(char *str)
 {
     char *ptr = str;
 
-    for (; ptr && *ptr; ptr++) {}
+    while (ptr && *ptr) {
+        ptr++;
+    }
     return ptr - str;
 }
 
