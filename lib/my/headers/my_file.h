@@ -15,7 +15,7 @@
 //on success: file descriptor or 0 if [close] is 1
 //on error: -1
 int create_file(char *filepath, int mode, int close);
-//open file at [filepath] with read and write access
+//open file at [filepath] with read access
 //RETURN VALUE:
 //on success: file descriptor
 //on error: -1

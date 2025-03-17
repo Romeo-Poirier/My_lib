@@ -22,7 +22,7 @@ int create_file(char *filepath, int mode, int close)
 
 int open_file(char const *filepath)
 {
-    int fd = open(filepath, O_RDWR);
+    int fd = open(filepath, O_RDONLY);
 
     if (fd == -1)
         write(STDERR_FILENO, "open_file: cannot open\n", 23);
