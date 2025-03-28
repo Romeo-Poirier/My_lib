@@ -21,7 +21,7 @@ all:    mylib $(NAME)
 mylib:
 	make -C lib/my all
 
-$(NAME):
+$(NAME): $(OBJ)
 	gcc -o $(NAME) $(OBJ) $(LDFLAGS) $(CFLAGS)
 
 clean:
