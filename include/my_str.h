@@ -8,216 +8,351 @@
 #ifndef MY_STR_H
     #define MY_STR_H
     #include <stddef.h>
+    #include "my_bool.h"
 
 //my_*len.c
 
-//return the length of str
+//Finds the length of str
+//@param str string
+//@return length of str
 int my_strlen(char *str);
-//return the length from n to the first encountered character that is in c
+//Finds the length from index n to the
+//next occurrence of atleast one character inside c
+//@param str string
+//@param n index to start at
+//@param c list of characters to stop at
+//@return length beteween n and first occurence of a char of c
 int mstrn_to_clen(char *str, int n, char *c);
-//return the number of digits of an int
+//Finds the number of digits in nb
+//@param nb int
+//@return length of nb
 int my_intlen(int nb);
-//return the number of digits of a long long int
+//Finds the number of digits in nb
+//@param nb long long int
+//@return length of nb
 int my_llilen(long long int nb);
 
-
-//my_nullify.c
-
-//set any character to [\0] from [n] until [c] is met
-//[backwards] can be set to 1 to go from n to start of string
-//or can be set to 0 to go from n to end of string
-//if [c] is never encountered, will nullify form n to end or start
-//if src is NULL, the function succeeds
-//RETURN VALUE:
-//on success: 0
-//on error: 1 (backwards had invalid value)
+//Set any character to 0 between n and the first occurence of c
+//@param src string to modify
+//@param n index to start at
+//@param c char to stop at
+//@param backwards set at 1 to go from n to beginning, 0 for n to end
+//@returns on success 0 || on error: 1 (backwards had invalid value)
 int nullify_from_till(char *src, int n, char c, int backward);
 
 //my_findstr.c
 
-//return the first index where to_find was found in str or -1 if not found
+//Looks for to_find in str
+//@param str string
+//@param to_find string to find in str
+//@return pointer to str starting at the beginning of to_find
+//or str if to_find wasn't found
 char *my_strstr(char *str, char *to_find);
 
 
 //my_is*.c
 
-//return 1 if c is found inside str, else return 0
+//Looks for c in str
+//@param c character to find
+//@param str string to search in
+//@returns TRUE (1)
+//OR FALSE (0)
 int my_char_is_in(char c, char *str);
-//return 1 if c is a letter or a number, else return 0
+//Verify c is alphanumeric
+//@param c character to check
+//@returns TRUE (1)
+//OR FALSE (0)
 int my_char_isalnum(char const c);
-//return 1 if c is a letter, else return 0
+//Verify c is alphabetical
+//@param c character to check
+//@returns TRUE (1)
+//OR FALSE (0)
 int my_char_isalpha(char const c);
-//return 1 if c isn't a letter nor a number, else return 0
+//Verify c is anything but alphanumeric
+//@param c character to check
+//@returns TRUE (1)
+//OR FALSE (0)
 int my_char_isfence(char const c);
-//return 1 if c is lowercase letter, else return 0
+//Verify c is lowercase
+//@param c character to check
+//@returns TRUE (1)
+//OR FALSE (0)
 int my_char_islower(char const c);
-//return 1 if c is a number, else return 0
+//Verify c is numbers only (doesn't include '-')
+//@param c character to check
+//@returns TRUE (1)
+//OR FALSE (0)
 int my_char_isnumer(char const c);
-//return 1 if c is printable, else return 0
+//Verify c is printable (means you can see it)
+//@param c character to check
+//@returns TRUE (1)
+//OR FALSE (0)
 int my_char_isprint(char const c);
-//return 1 if c is uppercase letter, else return 0
+//Verify c is uppercase
+//@param c character to check
+//@returns TRUE (1)
+//OR FALSE (0)
 int my_char_isupper(char const c);
-//return 1 if str only consists of letters and numbers, else return 0
+//Verify str is alphanumeric only
+//@param c character to check
+//@returns TRUE (1)
+//OR FALSE (0)
 int my_str_isalnum(char const *str);
-//verify str only contains alphanumeric or given special characters
-//specials can be NULL but if it is NULL you should use my_str_isalnum
-//RETURN VALUE:
-//if str is only alphanum and specials: 1
-//else: 0
+//Verify str only contains alphanumeric or given special characters
+//@param str string to verify
+//@param specials list of allowed characters
+//@returns TRUE (1)
+//OR FALSE (0)
+//@note Specials can be NULL but in that case, just use my_str_isalnum
 int my_str_isalnum_and(char *str, char *specials);
-//return 1 if str only consists of letters, else return 0
+//Verify str only contains letters (uppercase or lower case)
+//@param str string to verify
+//@returns TRUE (1)
+//OR FALSE (0)
 int my_str_isalpha(char const *str);
-//return 1 if str only consists of lowercase letters, else return 0
+//Verify str only contains lowercase letters
+//@param str string to verify
+//@returns TRUE (1)
+//OR FALSE (0)
 int my_str_islower(char const *str);
-//return 1 if str only consists of numbers, else return 0
+//Verify str only contains numbers (doesn't include '-')
+//@param str string to verify
+//@returns TRUE (1)
+//OR FALSE (0)
 int my_str_isnumer(char const *str);
-//return 1 if str only consists of printable characters, else return 0
+//Verify str only contains printable characters (means you can see it)
+//@param str string to verify
+//@returns TRUE (1)
+//OR FALSE (0)
 int my_str_isprint(char const *str);
-//return 1 if str only consists of uppercase letters, else return 0
+//Verify str only contains uppercase letters
+//@param str string to verify
+//@returns TRUE (1)
+//OR FALSE (0)
 int my_str_isupper(char const *str);
 
 //my_put*.c
 
-//display str in the standard output
+//Write str in the standard error output
+//@param str string to write
+//@returns number of characters written
+//OR -1 on error
 int my_write_err(char *str);
-//display [name: name2: cause: err\n] in the standard error output
-int my_put4err(char *name, char *name2, char *cause, char *err);
-//display [name: name2: err\n] in the standard error output
-int my_put3err(char *name, char *name2, char *err);
-//display [name: err\n] in the standard error output
+//Write [name: err\n] in the standard error output
+//@param name should be the name of program or func
+//@param err the error that happened
+//@returns number of characters written
+//OR -1 on error
 int my_puterr(char *name, char *err);
-//display a character in the standard output, return 1
+//Write c to the standard output
+//@param c character to write
+//@returns 1
 int my_putchar(char const c);
-//display an int in the standard output, return length of nb
+//Write an int to the standard output
+//@param nb number to write
+//@returns number characters written
 int my_putint(int nb);
-//display a long long int in the standard output, return length of nb
+//Write a long long int to the standard output
+//@param nb number to write
+//@returns number characters written
 int my_putlli(long long int nb);
-//display str in the standard output, return length of str
+//Write a string to the standard output
+//@param str string to write
+//@returns number characters written
 int my_putstr(char *str);
-//display str from i to end in the standard output, return end - i
+//Write a string to the standard output
+//starting at i up to end
+//@param str string to write
+//@param i index to start at
+//@param end index to stop at
+//@returns number characters written
 int my_putstr_i_end(char *str, int i, int end);
 
-//copy nb into a malloc'd string
-//RETURN VALUE:
-//on success: pointer to malloc'd string
-//on error: NULL
+//malloc a new string and write nb in it
+//@param nb number to write
+//@returns malloc'd string
+//OR NULL on error
 char *int_to_str(int nb);
 
 //my_revstr.c
 
-//reverse str
+//modify str to write it in reverse
+//@param str string to reverse
+//@returns pointer to str
 char *my_revstr(char *str);
 
 
 //my_str| capitalize | upcase | lowcase |.c
 
-//the first letter of every word becomes uppercase
+//Change first letter of every word to uppercase
+//@param str string to modify
+//@returns pointer to str
 char *my_strcapitalize(char *str);
 //all letters become lowercase
+//Change all letters to lowercase
+//@param str string to modify
+//@returns pointer to str
 char *my_strlowcase(char *str);
-//all letters become uppercase
+//Change all letters to uppercase
+//@param str string to modify
+//@returns pointer to str
 char *my_strupcase(char *str);
 
 
 //my_str_to_warr.c
 
-//turn str into a malloc'd word array
-//separator can be NULL to use defaults
-//RETURN VALUE:
-//on success: pointer to allocated word array
-//on error: NULL
+//malloc a new list of strings and write every words in it
+//@param str string to make list of word from
+//@param separator separators that should seperate every word
+//@returns pointer to malloc list of string
+//OR NULL on error
+//@note separator can be NULL to use default separators wich are
+//"[space]\\n\\0"
 char **str_to_warr(char *str, char *separator);
-//turn str, starting at index n, into a malloc'd word array
-//separator can be NULL to use defaults
-//RETURN VALUE:
-//on success: pointer to allocated word array
-//on error: NULL
+//malloc a new list of strings and write every words in it
+//@param str string to make list of word from
+//@param separator separators that should seperate every word
+//@returns pointer to malloc list of string
+//OR NULL on error
+//@note separator can be NULL to use default separators wich are
+//"[space]\\n\\0"
 char **str_to_warr_from(char *str, char *separator, int n);
 //free a word array
+//Deprecated do not use
 void free_warr(char **warr);
 
 //my_nb_words.c
 
-/*return the number of words in str
-separator can be set to NULL to use default
-or use custom separators defined in a string
-*/
+//counts the number of words in str
+//@param str string to count the words in
+//@param separator list of characters used to seperate words
+//@returns number of words in str
+//@note separator can be NULL to use default separators wich are
+//"[space]\\n\\0"
 int my_nb_words(char *str, char *separator);
 
 
 
 //my_strcat.c
 
-/*concatenates src at the end of dest.
-dest needs to be of correct size*/
+//concatenate src at the end of dest
+//@param dest destination of the cat
+//@param src src of the cat
+//@returns pointer to dest
+//@note dest needs to be big enough as my_strcat does not realloc nor alloc
 char *my_strcat(char *dest, char *src);
-/*concatenates src up to n at the end of dest.
-dest needs to be of correct size*/
+//concatenate src up to n at the end of dest
+//@param dest destination of the cat
+//@param src src of the cat
+//@param n length of src to cat
+//@returns pointer to dest
+//@note dest needs to be big enough as my_strcat does not realloc nor alloc
 char *my_strncat(char *dest, char *src, int n);
-/*concatenates src from n to m - 1 at the end of dest.
-dest needs to be of correct size*/
+//concatenate src from n up to m at the end of dest
+//@param dest destination of the cat
+//@param src src of the cat
+//@param n index of src to start cat
+//@param m length of src to cat
+//@returns pointer to dest
+//@note dest needs to be big enough as my_strcat does not realloc nor alloc
 char *mstrn_to_mcat(char *dest, char *src, int n, int m);
 
 
 //my_strcmp.c
 
-/*compare s1 and s2, return the difference s1's char - s2's char using ascii.
-return 0 if no different characters encountered*/
+//compare s1 and s2
+//@param s1 string
+//@param s2 string
+//@returns 0 if s1 and s2 are the same
+//OR the difference between the first character that is different
 int my_strcmp(char const *s1, char const *s2);
-/*compare s1 and s2 up to n, return the difference s1's char - s2's char
-using ascii. return 0 if no different characters encountered*/
+//compare s1 and s2 up to n
+//@param s1 string
+//@param s2 string
+//@param n length to compare
+//@returns 0 if s1 and s2 are the same
+//OR the difference between the first character that is different
 int my_strncmp(char const *s1, char const *s2, int n);
 
 
 //my_strcpy.c
 
-/*copy src into dest.
-dest needs to be of correct size*/
+//copy src into dest
+//@param dest destination of the copy
+//@param src source to copy
+//@returns pointer to dest
+//@note dest needs to be big enough as my_strcpy does not realloc nor alloc
 char *my_strcpy(char *dest, char *src);
-/*copy src up to n into dest.
-dest needs to be of correct size*/
+//copy src up to n into dest
+//@param dest destination of the copy
+//@param src source to copy
+//@param n length of src to copy
+//@returns pointer to dest
+//@note dest needs to be big enough as my_strcpy does not realloc nor alloc
 char *my_strncpy(char *dest, char *src, int n);
-/*copy src from n to c (or the end of src if c isn't encountered) into dest.
-dest needs to be of correct size*/
+//copy src from n up to c into dest
+//@param dest destination of the copy
+//@param src source to copy
+//@param n length of src to copy
+//@returns pointer to dest
+//@note dest needs to be big enough as my_strcpy does not realloc nor alloc
 char *mstrn_to_ccpy(char *dest, char *src, int n, char c);
-/*copy src from n to m into dest.
-dest needs to be of correct size*/
+//copy src from n up to m into dest
+//@param dest destination of the copy
+//@param src soucre to copy
+//@param n index to start copy
+//@param m index to stop copy
+//@returns pointer to dest
+//@note dest needs to be big enough as my_strcpy does not realloc nor alloc
+//@note also, if m is greater than the last index of src, it copies up to the end
 char *mstrn_to_mcpy(char *dest, char *src, int n, int m);
 //cpy src starting at n into dest
-//dest needs to be of correct size
+//@param dest destination of the copy
+//@param src source to copy
+//@param n index to start copying from
+//@returns pointer to dest
+//@note dest needs to be big enough as my_strcpy does not realloc nor alloc
 char *my_strcpy_from(char *dest, char *src, int n);
 
 //my_strdup.c
 
-//return a malloc'd copy of src
+//duplicate a string
+//@param src string to duplicate
+//@returns malloc'd string
+//OR NULL on error
 char *my_strdup(char *src);
-//return a malloc'd copy of src starting at n
+//duplicate a string starting at n
+//@param src string to duplicate
+//@param n index to start duplicating at
+//@returns malloc'd string
+//OR NULL on error
 char *my_strdup_from(char *src, int n);
-//copy src until one char inside of [c] is encountered in a malloc'd string
-//RETURN VALUE:
-//on success: pointer to a malloc'd string
-//on error: NULL
+//duplicate src until c is met
+//@param src string to duplicate
+//@param c character to stop at
+//@returns malloc'd string
+//OR NULL on error
 char *strdup_till(char *src, char c);
 
 //my_strdupcat.c
 
-//allocate memory to cpy s1 and s2 in a new str
-//if s1 is NULL but not s2, is equivalent to my_strdup(s2)
-//if s2 is NULL but not s1, is equivalent to my_strdup(s1)
-//if both are NULL, return NULL
-//RETURN VALUE:
-//on success: pointer to malloc'd string
-//on error: NULL
+//duplicate s1 and cat s2 to s1
+//@param s1 string to duplicate
+//@param s2 string to cat to s1
+//@returns malloc'd string
+//OR NULL on error
+//@note if s1 is NULL but not s2, is equivalent to my_strdup(s2)
+//@note if s2 is NULL but not s1, is equivalent to my_strdup(s1)
 char *strdupcat(char *s1, char *s2);
-//allocate memory to copy s1, s2 and s3 in a new str
-//all arguments need to be different than NULL
-//RETURN VALUE:
-//on success: pointer to malloc'd string
-//on error: NULL
+//duplicate s1 and cat s2 and s3 to s1
+//@param s1 string to duplicate
+//@param s2 string to cat to s1 first
+//@param s3 string to cat to s1 in 2nd
+//@returns malloc'd string
 char *strdup2cat(char *s1, char *s2, char *s3);
-//allocate memory to copy s1 and cat s2 up to n in a new str
-//RETURN VALUE:
-//on success: pointer to malloc'd string
-//on failure: NULL
+//duplicate s1 up to n and cat s2 to s1
+//@param s1 string to duplicate
+//@param s2 string to cat to s1
+//@param n length of s1 to duplicate
 char *strdupncat(char *s1, char *s2, int n);
 #endif /* MY_STR_H */
